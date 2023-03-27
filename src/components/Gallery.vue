@@ -40,12 +40,13 @@ export default {
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  padding: 10px;
+  gap: 20px;
+  padding: 20px;
+  background: rgb(209, 204, 198);
 }
 .gallery-container {
   position: relative;
-  height: 300px;
+  height: 350px;
   /* width: 200px; */
   overflow: hidden;
 }
@@ -53,5 +54,7 @@ img {
   height: 100%;
   width: auto;
   object-fit: cover;
+  /* border: 3px solid white;*/
+  border-radius: 5px;
 }
 </style>
