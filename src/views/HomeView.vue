@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <ContentMain msg="Welcome to Your Homepage" />
+    <ContentMain header="Welcome to Your Homepage" />
     <Carousel
       label1="First slide label"
       label2="Second slide label"

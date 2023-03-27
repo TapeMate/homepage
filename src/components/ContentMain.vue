@@ -1,12 +1,15 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <img alt="Vue logo" src="../assets/logo.png" />
+  <h1>{{ header }}</h1>
 </template>
 
 <script>
 export default {
   name: "ContentMain",
   props: {
-    msg: String,
+    header: String,
+    logo: String,
+    alt: String,
   },
 };
 </script>
