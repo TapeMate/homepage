@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ContentMain from "./components/ContentMain.vue";
 import NavbarMain from "./components/NavbarMain.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    ContentMain,
     NavbarMain,
     Footer,
   },
