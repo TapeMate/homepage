@@ -93,6 +93,11 @@ export default {
 </script>
 
 <style scoped>
+img {
+  height: 400px;
+  object-fit: cover;
+  opacity: 0.3;
+}
 .wrapper {
   margin: 20px 0;
 }
