@@ -1,21 +1,24 @@
 <template>
   <NavbarMain />
-  <nav>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </nav>
+  </nav> -->
   <router-view />
+  <Footer></Footer>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import NavbarMain from "./components/NavbarMain.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
     NavbarMain,
+    Footer,
   },
 };
 </script>
