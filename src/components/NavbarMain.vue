@@ -19,11 +19,9 @@
           style="--bs-scroll-height: 100px"
         >
           <li class="nav-item">
-            <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
             <router-link class="nav-link active" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link" href="#">Link</a> -->
             <router-link class="nav-link" to="/about">About</router-link>
           </li>
           <li class="nav-item dropdown">
