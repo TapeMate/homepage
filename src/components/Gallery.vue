@@ -1,15 +1,32 @@
 <template>
   <div class="gallery">
-    <div class="gallery-container test">
-      <a href="../assets/garden03.jpg"></a>
-      <!-- <img src="../assets/garden01.jpg" alt="" /> -->
+    <div class="gallery-container">
+      <img src="../assets/garden01.jpg" alt="" />
     </div>
-    <!-- <div class="gallery-container">
+    <div class="gallery-container">
       <img src="../assets/garden02.jpg" alt="" />
     </div>
     <div class="gallery-container">
       <img src="../assets/garden03.jpg" alt="" />
-    </div> -->
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden04.jpg" alt="" />
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden05.jpg" alt="" />
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden06.jpg" alt="" />
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden07.jpg" alt="" />
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden08.jpg" alt="" />
+    </div>
+    <div class="gallery-container">
+      <img src="../assets/garden09.jpg" alt="" />
+    </div>
   </div>
 </template>
 
@@ -23,23 +40,18 @@ export default {
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
   gap: 10px;
-}
-
-.test {
-  background-image: url(../assets/garden03.jpg);
-  background-size: cover;
+  padding: 10px;
 }
 .gallery-container {
+  position: relative;
   height: 300px;
-  width: 100%;
+  /* width: 200px; */
+  overflow: hidden;
 }
 img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-
-  /* vertical-align: middle; */
+  height: 100%;
+  width: auto;
+  object-fit: cover;
 }
 </style>
