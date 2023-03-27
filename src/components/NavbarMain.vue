@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar scroll</a>
+      <a class="navbar-brand" href="#">{{ title }}</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -62,5 +62,8 @@
 <script>
 export default {
   name: "NavbarMain",
+  props: {
+    title: String,
+  },
 };
 </script>

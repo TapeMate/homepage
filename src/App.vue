@@ -1,7 +1,7 @@
 <template>
-  <NavbarMain />
+  <NavbarMain title="Navigation" />
   <router-view />
-  <Footer></Footer>
+  <Footer text="PLACEHOLDER FOOTER" />
 </template>
 
 <script>

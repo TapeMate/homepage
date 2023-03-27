@@ -1,10 +1,13 @@
 <template>
-  <footer>Placeholder Footer.</footer>
+  <footer>{{ text }}</footer>
 </template>
 
 <script>
 export default {
   name: "Footer",
+  props: {
+    text: String,
+  },
 };
 </script>
 
