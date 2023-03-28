@@ -1,38 +1,40 @@
 <template>
   <div class="gallery">
-    <div class="gallery-container">
-      <img src="../assets/garden01.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden02.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden03.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden04.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden05.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden06.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden07.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden08.jpg" alt="" />
-    </div>
-    <div class="gallery-container">
-      <img src="../assets/garden09.jpg" alt="" />
+    <div v-for="image in images" :key="image" class="gallery-container">
+      <img :src="image" alt="" />
     </div>
   </div>
 </template>
 
 <script>
+// importing images for gallery
+import gardenImage01 from "../assets/gallery/garden01.jpg";
+import gardenImage02 from "../assets/gallery/garden02.jpg";
+import gardenImage03 from "../assets/gallery/garden03.jpg";
+import gardenImage04 from "../assets/gallery/garden04.jpg";
+import gardenImage05 from "../assets/gallery/garden05.jpg";
+import gardenImage06 from "../assets/gallery/garden06.jpg";
+import gardenImage07 from "../assets/gallery/garden07.jpg";
+import gardenImage08 from "../assets/gallery/garden08.jpg";
+import gardenImage09 from "../assets/gallery/garden09.jpg";
+
 export default {
   name: "Gallery",
+  data() {
+    return {
+      images: [
+        gardenImage01,
+        gardenImage02,
+        gardenImage03,
+        gardenImage04,
+        gardenImage05,
+        gardenImage06,
+        gardenImage07,
+        gardenImage08,
+        gardenImage09,
+      ],
+    };
+  },
 };
 </script>
 
@@ -40,7 +42,7 @@ export default {
 .gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 40px;
   padding: 20px;
   background: rgb(209, 204, 198);
 }
