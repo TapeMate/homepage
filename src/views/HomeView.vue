@@ -8,12 +8,12 @@
       content1="Some representative placeholder content for the first slide."
       content2="Some representative placeholder content for the second slide."
       content3="Some representative placeholder content for the third slide."
-      src1="https://images.pexels.com/photos/2781760/pexels-photo-2781760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      src2="https://images.pexels.com/photos/1382393/pexels-photo-1382393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      src3="https://images.pexels.com/photos/122429/leaf-nature-green-spring-122429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt1="#"
-      alt2="#"
-      alt3="#"
+      :src1="sliderImg1"
+      :src2="sliderImg2"
+      :src3="sliderImg3"
+      alt1="slider Image 1"
+      alt2="slider Image 2"
+      alt3="slider Image 3"
     />
   </div>
 </template>
@@ -23,11 +23,23 @@
 import ContentMain from "@/components/ContentMain.vue";
 import Carousel from "@/components/Carousel.vue";
 
+// importing slider images:
+import sliderImg1 from "../assets/slider/slider01.jpg";
+import sliderImg2 from "../assets/slider/slider02.jpg";
+import sliderImg3 from "../assets/slider/slider03.jpg";
+
 export default {
   name: "HomeView",
   components: {
     ContentMain,
     Carousel,
+  },
+  data() {
+    return {
+      sliderImg1,
+      sliderImg2,
+      sliderImg3,
+    };
   },
 };
 </script>

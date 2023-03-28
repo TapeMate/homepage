@@ -96,7 +96,7 @@ export default {
 img {
   height: 400px;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 .wrapper {
   margin: 20px 0;
