@@ -1,5 +1,7 @@
 <template>
-  <Gallery />
+  <div class="gallery-wrapper">
+    <Gallery />
+  </div>
 </template>
 
 <script>
@@ -12,3 +14,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.gallery-wrapper {
+  display: flex;
+  justify-content: center;
+}
+</style>
