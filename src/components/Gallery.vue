@@ -13,8 +13,6 @@
   </div>
 </template>
 
-<!-- Add modal function  -->
-
 <script>
 // importing images for gallery
 import galleryImg01 from "../assets/gallery/garden01.jpg";
@@ -65,23 +63,22 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
   padding: 20px;
-  background: rgb(209, 204, 198);
   max-width: 1400px;
 }
 .gallery-container {
   position: relative;
   height: 350px;
-  /* width: 200px; */
   overflow: hidden;
   border-radius: 5px;
 }
+
 .gallery-container:hover .overlay {
   opacity: 0.7;
 }
 img {
-  display: block;
+  /* display: inline; */
   height: 100%;
-  width: auto;
+  width: 150%;
   object-fit: cover;
   /* border: 3px solid white;*/
 }
