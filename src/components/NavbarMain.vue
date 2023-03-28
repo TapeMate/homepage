@@ -22,11 +22,12 @@
             <router-link class="nav-link active" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
-          </li>
-          <li class="nav-item">
             <router-link class="nav-link" to="/gallery">Gallery</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/about">About</router-link>
+          </li>
+
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -46,6 +47,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link disabled">Link</a>
+          </li>
+          <li style="color: red" class="nav-item">
+            <router-link
+              style="color: red; font-weight: bold"
+              class="nav-link"
+              to="/dev"
+              >DEV</router-link
+            >
           </li>
         </ul>
         <form class="d-flex" role="search">
