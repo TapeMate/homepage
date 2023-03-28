@@ -8,30 +8,30 @@
 
 <script>
 // importing images for gallery
-import gardenImage01 from "../assets/gallery/garden01.jpg";
-import gardenImage02 from "../assets/gallery/garden02.jpg";
-import gardenImage03 from "../assets/gallery/garden03.jpg";
-import gardenImage04 from "../assets/gallery/garden04.jpg";
-import gardenImage05 from "../assets/gallery/garden05.jpg";
-import gardenImage06 from "../assets/gallery/garden06.jpg";
-import gardenImage07 from "../assets/gallery/garden07.jpg";
-import gardenImage08 from "../assets/gallery/garden08.jpg";
-import gardenImage09 from "../assets/gallery/garden09.jpg";
+import galleryImg01 from "../assets/gallery/garden01.jpg";
+import galleryImg02 from "../assets/gallery/garden02.jpg";
+import galleryImg03 from "../assets/gallery/garden03.jpg";
+import galleryImg04 from "../assets/gallery/garden04.jpg";
+import galleryImg05 from "../assets/gallery/garden05.jpg";
+import galleryImg06 from "../assets/gallery/garden06.jpg";
+import galleryImg07 from "../assets/gallery/garden07.jpg";
+import galleryImg08 from "../assets/gallery/garden08.jpg";
+import galleryImg09 from "../assets/gallery/garden09.jpg";
 
 export default {
   name: "Gallery",
   data() {
     return {
       images: [
-        gardenImage01,
-        gardenImage02,
-        gardenImage03,
-        gardenImage04,
-        gardenImage05,
-        gardenImage06,
-        gardenImage07,
-        gardenImage08,
-        gardenImage09,
+        galleryImg01,
+        galleryImg02,
+        galleryImg03,
+        galleryImg04,
+        galleryImg05,
+        galleryImg06,
+        galleryImg07,
+        galleryImg08,
+        galleryImg09,
       ],
     };
   },
