@@ -14,20 +14,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.about {
-  padding: 1rem;
-}
-h3 {
-  padding: 2rem;
-  font-weight: bold;
-}
-h5 {
-  padding: 1rem;
-  font-weight: bold;
-}
-p {
-  line-height: 1;
-}
-</style>
