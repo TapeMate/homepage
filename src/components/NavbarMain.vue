@@ -27,6 +27,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/about">About</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact">Contact</router-link>
+          </li>
 
           <li class="nav-item dropdown">
             <a
@@ -48,7 +51,7 @@
           <li class="nav-item">
             <a class="nav-link disabled">Link</a>
           </li>
-          <li style="color: red" class="nav-item">
+          <li style="color: red; margin-left: 100px" class="nav-item">
             <router-link
               style="color: red; font-weight: bold"
               class="nav-link"
