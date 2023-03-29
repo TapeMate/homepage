@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Popups from "../dev/Popups.vue";
+import Popups from "../components/dev/Popups.vue";
 
 export default {
   name: "DevView",
