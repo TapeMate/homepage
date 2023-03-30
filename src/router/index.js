@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import MenuView from "../views/MenuView.vue";
 import HomeView from "../views/HomeView.vue";
 import GalleryView from "../views/GalleryView.vue";
 import ContactView from "../views/ContactView.vue";
@@ -8,6 +9,11 @@ import DevView from "../views/DevView.vue";
 const routes = [
   {
     path: "/",
+    name: "menu",
+    component: MenuView,
+  },
+  {
+    path: "/home",
     name: "home",
     component: HomeView,
   },
