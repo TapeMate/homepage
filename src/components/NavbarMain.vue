@@ -19,7 +19,7 @@
           style="--bs-scroll-height: 100px"
         >
           <li class="nav-item">
-            <router-link class="nav-link active" to="/">Home</router-link>
+            <router-link class="nav-link active" to="/home">Home</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/gallery">Gallery</router-link>
