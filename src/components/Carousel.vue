@@ -28,25 +28,21 @@
         ></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="4000">
-          <img :src="src1" class="d-block w-100" :alt="alt1" />
+        <div
+          v-for="(item, index) in carouselItems"
+          :key="index"
+          class="carousel-item"
+          :class="item.isActive === true ? 'active' : ''"
+          data-bs-interval="4000"
+        >
+          <img
+            src="../assets/slider/slider01.jpg"
+            class="d-block w-100"
+            :alt="item.alt"
+          />
           <div class="carousel-caption d-none d-md-block">
-            <h5>{{ label1 }}</h5>
-            <p>{{ content1 }}</p>
-          </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="4000">
-          <img :src="src2" class="d-block w-100" :alt="alt2" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{ label2 }}</h5>
-            <p>{{ content2 }}</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img :src="src3" class="d-block w-100" :alt="alt3" />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{ label3 }}</h5>
-            <p>{{ content3 }}</p>
+            <h5>{{ item.label }}</h5>
+            <p>{{ item.content }}</p>
           </div>
         </div>
       </div>
@@ -76,18 +72,7 @@
 export default {
   name: "Carousel",
   props: {
-    label1: String,
-    label2: String,
-    label3: String,
-    content1: String,
-    content2: String,
-    content3: String,
-    src1: String,
-    src2: String,
-    src3: String,
-    alt1: String,
-    alt2: String,
-    alt3: String,
+    carouselItems: Array,
   },
 };
 </script>
