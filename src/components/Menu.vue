@@ -3,14 +3,14 @@
     <div class="menu-main-wrapper">
       <h2 class="menu-main-header">{{ header }}</h2>
       <div
-        v-for="(option, index) in menuOptions"
+        v-for="(item, index) in menuItems"
         :key="index"
         class="menu-main-element"
       >
         <div class="menu-main-container">
-          <h5 class="menu-element-header">{{ option }}</h5>
-          <router-link class="menu-element-link" :to="rout[index]">{{
-            routName[index]
+          <h5 class="menu-element-header">{{ item.header }}</h5>
+          <router-link class="menu-element-link" :to="item.rout">{{
+            item.name
           }}</router-link>
         </div>
       </div>
@@ -23,9 +23,7 @@ export default {
   name: "Menu",
   props: {
     header: String,
-    menuOptions: Array,
-    rout: Array,
-    routName: Array,
+    menuItems: Array,
   },
 };
 </script>

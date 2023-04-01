@@ -1,0 +1,19 @@
+{
+    "menuItems": [
+        {
+            "header": "Menu Option 1",
+            "rout": "/gallery",
+            "name": "Gallery"
+        },
+        {
+            "header": "Menu Option 2",
+            "rout": "/home",
+            "name": "Home"
+        },
+        {
+            "header": "Menu Option 3",
+            "rout": "/contact",
+            "name": "Contact"
+        }
+    ]
+}

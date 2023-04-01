@@ -28,14 +28,14 @@
         ></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
+        <div class="carousel-item active" data-bs-interval="4000">
           <img :src="src1" class="d-block w-100" :alt="alt1" />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ label1 }}</h5>
             <p>{{ content1 }}</p>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="2000">
+        <div class="carousel-item" data-bs-interval="4000">
           <img :src="src2" class="d-block w-100" :alt="alt2" />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ label2 }}</h5>

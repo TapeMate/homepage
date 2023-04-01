@@ -1,22 +1,15 @@
 <template>
-  <Menu
-    header="Main Menu"
-    :menuOptions="menuOptions"
-    :rout="routs"
-    :routName="routNames"
-  />
+  <Menu header="Main Menu" :menuItems="items" />
 </template>
 
 <script>
-import Menu from "../components/Menu.vue";
+import config from "../assets/json/config.json";
 
 export default {
   name: "MenuView",
   data() {
     return {
-      menuOptions: ["Menu Option 1", "Menu Option 2", "Menu Option 3"],
-      routs: ["/gallery", "/home", "/contact"],
-      routNames: ["Gallery", "Home", "Contac"],
+      items: config.menuItems,
     };
   },
 };
