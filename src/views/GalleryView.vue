@@ -1,6 +1,7 @@
 <template>
   <div class="gallery-wrapper">
     <Gallery />
+    <!--  -->
   </div>
 </template>
 
