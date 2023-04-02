@@ -1,18 +1,24 @@
 <template>
   <NavbarMain title="Navigation" />
   <router-view />
-  <Footer text="PLACEHOLDER FOOTER" />
+  <Footer :companyData="footerData" />
 </template>
 
 <script>
 import NavbarMain from "./components/NavbarMain.vue";
 import Footer from "./components/Footer.vue";
+import config from "./assets/json/config.json";
 
 export default {
   name: "App",
   components: {
     NavbarMain,
     Footer,
+  },
+  data() {
+    return {
+      footerData: config.companyInfo,
+    };
   },
 };
 </script>

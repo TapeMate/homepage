@@ -1,4 +1,14 @@
 <template>
+  <h3>Mission / Story / More leading Content</h3>
+  <p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus soluta
+    nemo earum nostrum, laborum voluptas minus ab expedita, similique maiores,
+    nulla animi. Quae alias non nihil debitis adipisci vel numquam? Illo
+    facilis, at, velit itaque optio error aperiam ratione distinctio id omnis
+    ipsam ad, repellendus accusamus consequatur ullam earum voluptate pariatur
+    eaque eum iusto. Recusandae consequatur dolor id hic. Eveniet?
+  </p>
+
   <h5>Angaben zum Sitz des Unternehmens</h5>
   <p>{{ companyData[0].name }}</p>
   <p>{{ companyData[0].street }}</p>
@@ -11,7 +21,7 @@
   <p v-if="companyData[0].ceo02 != ''">{{ companyData[0].ceo02 }}</p>
   <p v-if="companyData[0].ceo03 != '' > 0">{{ companyData[0].ceo03 }}</p>
 
-  <h5 v-if="companyData[0].executive != ''">Aufsichtsratsvorsitzender</h5>
+  <h5 v-if="companyData[0].executive != ''">Aufsichtsratsvorsitzende</h5>
   <p v-if="companyData[0].executive != ''">
     {{ companyData[0].executive }}
   </p>
