@@ -6,6 +6,18 @@
       data-bs-ride="carousel"
     >
       <div class="carousel-indicators">
+        <!-- future work with for double loop -->
+        <!-- <button
+          v-for="(item, index) in carouselItems"
+          :key="index"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="0"
+          :class="item.isActive === true ? 'active' : ''"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button> -->
+        <!-- end of future work -->
         <button
           type="button"
           data-bs-target="#carouselExampleDark"
@@ -26,6 +38,12 @@
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
       </div>
       <div class="carousel-inner">
         <div
@@ -33,13 +51,9 @@
           :key="index"
           class="carousel-item"
           :class="item.isActive === true ? 'active' : ''"
-          data-bs-interval="4000"
+          :data-bs-interval="item.interval"
         >
-          <img
-            src="../assets/slider/slider01.jpg"
-            class="d-block w-100"
-            :alt="item.alt"
-          />
+          <img :src="images[index]" class="d-block w-100" :alt="item.alt" />
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ item.label }}</h5>
             <p>{{ item.content }}</p>
@@ -73,6 +87,7 @@ export default {
   name: "Carousel",
   props: {
     carouselItems: Array,
+    images: Array,
   },
 };
 </script>
@@ -81,7 +96,7 @@ export default {
 img {
   height: 400px;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 .wrapper {
   margin: 20px 0;
