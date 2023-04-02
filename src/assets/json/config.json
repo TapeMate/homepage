@@ -63,5 +63,31 @@
             "ceo03": "Sabine Mustermann",
             "executive": "Sabine Mustermann"
         }
+    ],
+    "socialMedia": [
+        {
+            "url": "https://www.facebook.com/",
+            "icon": "fa-brands fa-square-facebook"
+        },
+        {
+            "url": "https://www.instagram.com/",
+            "icon": "fa-brands fa-instagram"
+        },
+        {
+            "url": "https://www.youtube.com/",
+            "icon": "fa-brands fa-youtube"
+        },
+        {
+            "url": "https://www.linkedin.com/",
+            "icon": "fa-brands fa-linkedin"
+        },
+        {
+            "url": "https://www.xing.com/",
+            "icon": "fa-brands fa-square-xing"
+        },
+        {
+            "url": "https://www.twitter.com/",
+            "icon": "fa-brands fa-square-twitter"
+        }
     ]
 }

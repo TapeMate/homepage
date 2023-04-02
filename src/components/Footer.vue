@@ -29,7 +29,18 @@
         </p>
       </div>
       <div class="footer-content">
-        <p>social media and icons</p>
+        <p>
+          <b>Follow {{ companyData[0].name }}:</b>
+        </p>
+        <span
+          v-for="(item, index) in socialMedia"
+          :key="index"
+          class="social-media-icon"
+        >
+          <a :href="item.url" target="_blank" class="social-media-link"
+            ><i :class="item.icon"></i
+          ></a>
+        </span>
       </div>
     </div>
   </footer>
@@ -40,6 +51,7 @@ export default {
   name: "Footer",
   props: {
     companyData: Array,
+    socialMedia: Array,
   },
 };
 </script>
@@ -60,5 +72,16 @@ export default {
   text-align: left;
   padding: 1rem;
   width: 100%;
+}
+.social-media-icon {
+  padding: 0.5rem;
+}
+.social-media-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 36px;
+}
+.social-media-link:hover {
+  color: lime;
 }
 </style>

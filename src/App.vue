@@ -1,7 +1,7 @@
 <template>
   <NavbarMain title="Navigation" />
   <router-view />
-  <Footer :companyData="footerData" />
+  <Footer :companyData="footerData" :socialMedia="socialMediaData" />
 </template>
 
 <script>
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       footerData: config.companyInfo,
+      socialMediaData: config.socialMedia,
     };
   },
 };
