@@ -45,5 +45,23 @@
             "isActive": false,
             "interval": "4000"
         }
+    ],
+    "companyInfo": [
+        {
+            "name": "Muster GmbH & Co. KG",
+            "street": "Musterstraße 123",
+            "zipCode": "12345",
+            "city": "Musterstadt",
+            "country": "Deutschland",
+            "email": "company@muster-firma.de",
+            "homepage": "https://muster-firma.de",
+            "phone": "01234 555 666 777",
+            "registerID": "123456",
+            "taxID": "DE123456789",
+            "ceo01": "Hans Mustermann",
+            "ceo02": "Thomas Mustermann",
+            "ceo03": "Sabine Mustermann",
+            "executive": "Sabine Mustermann"
+        }
     ]
 }
