@@ -81,7 +81,7 @@ export default {
 }
 .form-container {
   width: 100%;
-  padding: 3rem;
+  padding: 4% 10% 2%;
   background-image: url("../assets/slider/slider02.jpg");
   background-size: cover;
 }
@@ -126,6 +126,7 @@ textarea:focus {
 
 label {
   background: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
 }
 
 form {
@@ -145,14 +146,14 @@ button {
   border: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   background: rgba(255, 255, 255, 0.8);
-  font-weight: bold;
+  font-weight: 600;
   font-size: 20px;
   transition: 0.5s;
   border-radius: 5px;
 }
 
 button:hover {
-  background: lime;
+  background: rgba(100, 255, 100, 0.8);
   border-radius: 15px;
 }
 </style>
