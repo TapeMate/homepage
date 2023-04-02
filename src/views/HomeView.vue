@@ -17,7 +17,7 @@ import config from "../assets/json/config.json";
 import sliderImg1 from "../assets/slider/slider01.jpg";
 import sliderImg2 from "../assets/slider/slider02.jpg";
 import sliderImg3 from "../assets/slider/slider03.jpg";
-import sliderImg4 from "../assets/slider/slider01.jpg";
+import sliderImg4 from "../assets/slider/slider04.jpg";
 
 export default {
   name: "HomeView",
