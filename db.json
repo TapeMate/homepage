@@ -1,0 +1,13 @@
+{
+  "contacts": [
+    {
+      "id": "2369-442023",
+      "date": "4.4.2023",
+      "topic": "Baumfällung",
+      "description": "Test un so im livebetrieb. mal sehen ob es passt.",
+      "phoneNumber": "051012649",
+      "email": "some@one.de",
+      "verifyEmail": "some@one.de"
+    }
+  ]
+}
