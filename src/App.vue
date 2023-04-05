@@ -1,5 +1,5 @@
 <template>
-  <NavbarMain title="Navigation" />
+  <NavbarMain title="Menu" />
   <router-view />
   <Footer :companyData="footerData" :socialMedia="socialMediaData" />
 </template>

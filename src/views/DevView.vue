@@ -1,11 +1,11 @@
 <template>
-  <!-- <Popups /> -->
-  <ReadFromArray :data="items" />
+  <Popups />
+  <!-- <ReadFromArray :data="items" /> -->
 </template>
 
 <script>
-// import Popups from "../components/dev/Popups.vue";
-import ReadFromArray from "../components/dev/ReadFromArray.vue";
+import Popups from "../components/dev/Popups.vue";
+// import ReadFromArray from "../components/dev/ReadFromArray.vue";
 
 // import data:
 import data from "../assets/json/config.json";
@@ -13,8 +13,8 @@ import data from "../assets/json/config.json";
 export default {
   name: "DevView",
   components: {
-    // Popups,
-    ReadFromArray,
+    Popups,
+    // ReadFromArray,
   },
   data() {
     return {

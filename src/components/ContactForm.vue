@@ -122,9 +122,9 @@ export default {
   emits: ["add-contact"],
   data() {
     return {
+      // data
       id: "",
       date: "",
-
       topic: "",
       description: "",
       phoneNumber: "",
@@ -165,6 +165,12 @@ export default {
     },
 
     // validate Topic
+    validateTopic(e) {
+      const target = e.currentTarget;
+      this.toUpperCase(target);
+      this.checkTopicLength(target);
+    },
+
     toUpperCase(e) {
       const str = e.value.charAt(0).toUpperCase() + e.value.slice(1);
       document.querySelector(`#${e.id}`).value = str;
@@ -182,13 +188,13 @@ export default {
       }
     },
 
-    validateTopic(e) {
+    // validate Description
+    validateDescription(e) {
       const target = e.currentTarget;
       this.toUpperCase(target);
-      this.checkTopicLength(target);
+      this.checkDescriptionLength(target);
     },
 
-    // validate Description
     checkDescriptionLength(e) {
       if (this.description.length <= 30) {
         e.classList.add("error");
@@ -199,12 +205,6 @@ export default {
         this.errorDescription = "";
         this.checkDescription = true;
       }
-    },
-
-    validateDescription(e) {
-      const target = e.currentTarget;
-      this.toUpperCase(target);
-      this.checkDescriptionLength(target);
     },
 
     // validate Phone
@@ -223,14 +223,15 @@ export default {
     },
 
     // validate E-Mail
-    validateMailAdress() {
+    validateMailAdress(e) {
       const regex = /^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+      const target = e.currentTarget;
       if (!regex.test(this.email)) {
-        document.querySelector("#email").classList.add("error");
+        target.classList.add("error");
         this.errorMessageMail = "Please enter a valid E-Mail adress.";
         this.checkMail = false;
       } else {
-        document.querySelector("#email").classList.remove("error");
+        target.classList.remove("error");
         this.errorMessageMail = "";
         this.checkMail = true;
       }
@@ -245,12 +246,12 @@ export default {
       mailRepeatInput.addEventListener("paste", (e) => e.preventDefault());
 
       if (mail !== mailRepeat) {
-        document.querySelector("#email-repeat").classList.add("error");
+        mailRepeatInput.classList.add("error");
         this.errorMailRepeat =
           "Your E-Mail adresses don't match. Please check.";
         this.checkMailRepeat = false;
       } else {
-        document.querySelector("#email-repeat").classList.remove("error");
+        mailRepeatInput.classList.remove("error");
         this.errorMailRepeat = "";
         this.checkMailRepeat = true;
       }
@@ -275,7 +276,6 @@ export default {
         description: this.description,
         phoneNumber: this.phoneNumber,
         email: this.email,
-        verifyEmail: this.verifyEmail,
       };
       // emits data to the parent component. can be called in template.
       this.$emit("add-contact", newContact);
