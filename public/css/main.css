@@ -22,7 +22,7 @@
 }
 .contact-form-container form {
   padding: 2rem 1rem;
-  background: #c7c7c7;
+  background: #444;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -34,6 +34,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
+  border-bottom: 1px solid #666;
 }
 .contact-form-container form .input-group .input-control {
   position: relative;
@@ -42,7 +43,7 @@
   margin-bottom: 15px;
 }
 .contact-form-container form .input-group .input-control label {
-  color: #777;
+  color: #888;
   position: absolute;
   z-index: 1;
   padding: 0.5rem 1rem;
@@ -50,8 +51,13 @@
 .contact-form-container form .input-group .input-control input[type=text],
 .contact-form-container form .input-group .input-control input[type=email],
 .contact-form-container form .input-group .input-control textarea {
+  z-index: 1;
   width: 100%;
   border: none;
+  background: #222;
+  color: #fff;
+  caret-color: lightblue;
+  margin-bottom: 15px;
 }
 .contact-form-container form .input-group .input-control textarea {
   min-height: 150px;
@@ -111,12 +117,10 @@
   right: 9px;
 }
 .contact-form-container .error {
-  background: #fdebeb !important;
-  /* color: rgb(165, 0, 0) !important; */
   outline: 1px solid red !important;
+  caret-color: red !important;
 }
 .contact-form-container .success {
-  background: rgb(209, 255, 209);
   color: rgb(0, 85, 0);
 }
 .contact-form-container .phone-error,
@@ -124,18 +128,19 @@
 .contact-form-container .mail-repeat-error,
 .contact-form-container .topic-error,
 .contact-form-container .description-error {
-  padding: 0.5rem;
+  position: absolute;
+  z-index: 2;
   font-size: 12px;
-  margin: 2px;
-  left: 65%;
-  background: #ffe3e3;
-  border: 1px solid;
-  color: rgb(255, 0, 0);
+  font-weight: normal;
+  margin: 0;
+  padding-left: 5px;
+  color: red;
   display: inline;
+  text-align: left;
 }
 .contact-form-container input:focus,
 .contact-form-container textarea:focus {
-  outline: 1px solid rgb(5, 250, 115);
+  outline: 1px solid lightblue;
 }
 .contact-form-container #submit {
   width: 150px;
@@ -168,30 +173,30 @@
 
 @keyframes labelSlideOut {
   0% {
-    transform: translate(0, 0);
+    transform: translate(5px, 0);
     font-size: 16px;
     font-weight: 300;
-    color: #777;
+    color: #888;
   }
   100% {
-    transform: translate(-16px, -27px);
+    transform: translate(-11px, -28px);
     font-size: 12px;
-    font-weight: 700;
-    color: black;
+    font-weight: 500;
+    color: #fff;
   }
 }
 @keyframes labelSlideBackIn {
   0% {
-    transform: translate(-16px, -27px);
+    transform: translate(-11px, -28px);
     font-size: 12px;
-    font-weight: 700;
-    color: black;
+    font-weight: 500;
+    color: #fff;
   }
   100% {
     transform: translate(0, 0);
     font-size: 16px;
     font-weight: 300;
-    color: #777;
+    color: #888;
   }
 }
 .labelSlideOut {
@@ -200,4 +205,28 @@
 
 .labelSlideBackIn {
   animation: labelSlideBackIn 0.4s ease forwards;
+}
+
+@keyframes errorMsgShow {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 41px);
+  }
+}
+@keyframes errorMsgHide {
+  0% {
+    transform: translate(0, 41px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.errorMsgShow {
+  animation: errorMsgShow 0.4s ease-in forwards;
+}
+
+.errorMsgHide {
+  animation: errorMsgHide 0.4s ease-in forwards;
 }/*# sourceMappingURL=main.css.map */

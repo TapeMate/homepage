@@ -1,31 +1,31 @@
 // label focus animation keyframes
 @keyframes labelSlideOut {
   0% {
-    transform: translate(0, 0);
+    transform: translate(5px, 0);
     font-size: 16px;
     font-weight: 300;
-    color: #777;
+    color: #888;
   }
   100% {
-    transform: translate(-16px, -27px);
+    transform: translate(-11px, -28px);
     font-size: 12px;
-    font-weight: 700;
-    color: black;
+    font-weight: 500;
+    color: #fff;
   }
 }
 
 @keyframes labelSlideBackIn {
   0% {
-    transform: translate(-16px, -27px);
+    transform: translate(-11px, -28px);
     font-size: 12px;
-    font-weight: 700;
-    color: black;
+    font-weight: 500;
+    color: #fff;
   }
   100% {
     transform: translate(0, 0);
     font-size: 16px;
     font-weight: 300;
-    color: #777;
+    color: #888;
   }
 }
 
@@ -33,7 +33,32 @@
 .labelSlideOut {
   animation: labelSlideOut 0.4s ease forwards;
 }
-
 .labelSlideBackIn {
   animation: labelSlideBackIn 0.4s ease forwards;
+}
+
+// label focus animation keyframes
+@keyframes errorMsgShow {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 41px);
+  }
+}
+@keyframes errorMsgHide {
+  0% {
+    transform: translate(0, 41px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+// label focus animation classes
+.errorMsgShow {
+  animation: errorMsgShow 0.4s ease-in forwards;
+}
+.errorMsgHide {
+  animation: errorMsgHide 0.4s ease-in forwards;
 }

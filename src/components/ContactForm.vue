@@ -26,9 +26,13 @@
               class="fa-regular fa-circle-check"
               id="topic-success"
             ></i>
-            <p class="topic-error" v-if="errorTopic">
+            <p class="topic-error" input-err="topic">
               {{ errorTopic }}
             </p>
+            <!-- v-if brauch ich denke nicht mehr reicht als error message -->
+            <!-- <p class="topic-error" v-if="errorTopic">
+              {{ errorTopic }}
+            </p> -->
           </div>
 
           <div class="input-control">
@@ -138,7 +142,7 @@ export default {
       email: "",
       verifyEmail: "",
       // for input error & success handling
-      errorTopic: "",
+      errorTopic: "this is a test topic error (TTT)",
       errorDescription: "",
       errorPhone: "",
       errorMessageMail: "",
