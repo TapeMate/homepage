@@ -1,1 +1,13 @@
-@import "./partials/contactform";
+// Fonts
+@import "partials/02-fonts/fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-default;
+  //   font-family: "Courier New", Courier, monospace;
+}
+
+// Web Components default styling
+@import "partials/01-components/contactform";

@@ -6,62 +6,63 @@
     </div>
     <div @keyup="enableSubmit" class="form-container">
       <form @submit="onSubmit">
-        <div class="input-control" style="width: 25%">
-          <label for="topic">Topic</label>
-          <div class="success-icon-wrapper">
-            <input
-              @keyup="validateTopic"
-              type="text"
-              v-model="topic"
-              name="topic"
-              id="topic"
-              placeholder="Type in your topic here"
-              :class="checkTopic === true ? 'success' : ''"
-            />
-            <i
-              v-if="checkTopic === true"
-              class="fa-regular fa-circle-check"
-              id="topic-success"
-            ></i>
+        <div class="input-group">
+          <div class="input-control">
+            <label for="topic">Topic</label>
+            <div class="success-icon-wrapper">
+              <input
+                @keyup="validateTopic"
+                type="text"
+                v-model="topic"
+                name="topic"
+                id="topic"
+                placeholder="Type in your topic here"
+                :class="checkTopic === true ? 'success' : ''"
+              />
+              <i
+                v-if="checkTopic === true"
+                class="fa-regular fa-circle-check"
+                id="topic-success"
+              ></i>
+            </div>
+            <p class="topic-error" v-if="errorTopic">
+              {{ errorTopic }}
+            </p>
           </div>
-          <p class="topic-error" v-if="errorTopic">
-            {{ errorTopic }}
-          </p>
+          <div class="input-control">
+            <label for="description">Description</label>
+            <!-- needs validation for no script insert -->
+            <textarea
+              @keyup="validateDescription"
+              type="text"
+              v-model="description"
+              name="description"
+              id="description"
+              placeholder="Type in your topic here"
+            />
+            <p class="description-error" v-if="errorDescription">
+              {{ errorDescription }}
+            </p>
+          </div>
         </div>
-        <div class="input-control">
-          <label for="description">Description</label>
-          <textarea
-            @keyup="validateDescription"
-            type="text"
-            v-model="description"
-            name="description"
-            id="description"
-            placeholder="Type in your topic here"
-          />
-          <p class="description-error" v-if="errorDescription">
-            {{ errorDescription }}
-          </p>
-        </div>
-        <div class="input-container">
+        <div class="input-group">
           <div class="input-control">
             <label for="phone">Phone</label>
-            <div class="input-control">
-              <div class="success-icon-wrapper">
-                <input
-                  @keyup="validatePhoneNumber"
-                  type="text"
-                  v-model="phoneNumber"
-                  name="phone"
-                  id="phone"
-                  placeholder="Enter your phonenumber"
-                  :class="checkPhone === true ? 'success' : ''"
-                />
-                <i
-                  v-if="checkPhone === true"
-                  class="fa-regular fa-circle-check"
-                  id="phone-success"
-                ></i>
-              </div>
+            <div class="success-icon-wrapper">
+              <input
+                @keyup="validatePhoneNumber"
+                type="text"
+                v-model="phoneNumber"
+                name="phone"
+                id="phone"
+                placeholder="Enter your phonenumber"
+                :class="checkPhone === true ? 'success' : ''"
+              />
+              <i
+                v-if="checkPhone === true"
+                class="fa-regular fa-circle-check"
+                id="phone-success"
+              ></i>
             </div>
             <p class="phone-error" v-if="errorPhone">
               {{ errorPhone }}

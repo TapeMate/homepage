@@ -1,5 +1,5 @@
 <template>
-  <div class="test-container">
+  <div class="contact-form-wrapper">
     <ContactForm @add-contact="addContact" />
   </div>
 </template>
@@ -34,9 +34,12 @@ export default {
 </script>
 
 <style scoped>
-.test-container {
+.contact-form-wrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  padding: 2rem;
   width: 100%;
 }
 </style>

@@ -1,3 +1,76 @@
+@font-face {
+  font-family: "Karla Medium";
+  src: url("../../../assets/fonts/Karla/static/Karla-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Karla Bold";
+  src: url("../fonts/Karla/static/Karla-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: bold;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Karla Medium", sans-serif;
+}
+
+.contact-form-container {
+  width: 700px;
+}
+.contact-form-container form {
+  padding: 1rem;
+  background: #999;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.contact-form-container form .input-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.contact-form-container form .input-group .input-control {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 15px;
+}
+.contact-form-container form .input-group .input-control input[type=text],
+.contact-form-container form .input-group .input-control input[type=email],
+.contact-form-container form .input-group .input-control textarea {
+  width: 100%;
+}
+.contact-form-container form .input-group .input-control label {
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+.contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(1),
+.contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(2) {
+  grid-column: 1/end;
+}
+.contact-form-container .success-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: lime;
+  background: rgba(0, 0, 0, 0.9);
+}
+.contact-form-container .success-message h2 {
+  width: 100%;
+  height: 25%;
+}
+.contact-form-container .success-message i {
+  font-size: 100px;
+  margin-top: -900px;
+}
 .contact-form-container .success-icon-wrapper {
   position: relative;
 }
@@ -16,26 +89,6 @@
   color: rgb(0, 187, 0);
   top: 28%;
   right: 9px;
-}
-.contact-form-container .success-message {
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  color: lime;
-  background: rgba(0, 0, 0, 0.9);
-}
-.contact-form-container .success-message h2 {
-  width: 100%;
-  height: 25%;
-}
-.contact-form-container .success-message i {
-  font-size: 100px;
-  margin-top: -900px;
 }
 .contact-form-container .error {
   background: #fdebeb !important;
@@ -60,87 +113,10 @@
   color: rgb(255, 0, 0);
   display: inline;
 }
-.contact-form-container #phone {
-  width: 20%;
-}
-.contact-form-container .form-entry-info {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 1rem 0;
-  margin-bottom: 30px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-}
-.contact-form-container .form-container {
-  padding: 4% 10% 2%;
-  background-image: url("../assets/slider/slider02.jpg");
-  background-size: cover;
-}
-.contact-form-container .input-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.contact-form-container input,
-.contact-form-container label {
-  width: 100%;
-  display: inline-block;
-  padding: 0.5rem;
-  margin: 3px;
-}
-.contact-form-container input {
-  padding: 0.5rem 1rem;
-  min-width: 200px;
-}
-.contact-form-container textarea {
-  width: 100%;
-  height: 200px;
-  display: inline-block;
-  padding: 1rem;
-  margin: 3px;
-}
-.contact-form-container .input-container label {
-  text-align: center;
-  height: auto;
-  max-width: max-content;
-  min-width: 120px;
-}
-.contact-form-container .input-container .input-control {
-  display: flex;
-  justify-content: left;
-  width: 100%;
-}
-.contact-form-container .input-container .input-control:nth-child(2) {
-  margin-bottom: 0px !important;
-}
-.contact-form-container .input-container .input-control label,
-.contact-form-container .input-container .input-control input {
-  width: 20%;
-}
-.contact-form-container .input-control {
-  margin-bottom: 15px;
-}
-.contact-form-container input,
-.contact-form-container textarea,
-.contact-form-container label {
-  border: none;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-  outline: none;
-}
 .contact-form-container input:focus,
 .contact-form-container textarea:focus {
   background: #fff8e4;
   outline: 1px solid rgb(255, 199, 78);
-}
-.contact-form-container label {
-  background: rgba(255, 255, 255, 0.8);
-  font-weight: bold;
-  font-size: 12px;
-}
-.contact-form-container form {
-  padding: 1rem;
-  background: #333;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
 }
 .contact-form-container #submit {
   width: 150px;
