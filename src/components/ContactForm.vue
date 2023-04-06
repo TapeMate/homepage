@@ -10,8 +10,8 @@
           <div class="input-control">
             <input
               @keyup="validateTopic"
-              @focus="slideOutLabel"
-              @blur="checkSlideOutRemove"
+              @focus="onFocusLabelAnimation"
+              @blur="onBlurCheckInput"
               type="text"
               v-model="topic"
               name="topic"
@@ -34,6 +34,8 @@
           <div class="input-control">
             <textarea
               @keyup="validateDescription"
+              @focus="onFocusLabelAnimation"
+              @blur="onBlurCheckInput"
               type="text"
               v-model="description"
               name="description"
@@ -52,6 +54,8 @@
           <div class="input-control">
             <input
               @keyup="validatePhoneNumber"
+              @focus="onFocusLabelAnimation"
+              @blur="onBlurCheckInput"
               type="text"
               v-model="phoneNumber"
               name="phone"
@@ -72,6 +76,8 @@
           <div class="input-control">
             <input
               @keyup="validateMailAdress"
+              @focus="onFocusLabelAnimation"
+              @blur="onBlurCheckInput"
               type="email"
               v-model="email"
               name="email"
@@ -92,6 +98,8 @@
           <div class="input-control">
             <input
               @keyup="verifyMailAdress"
+              @focus="onFocusLabelAnimation"
+              @blur="onBlurCheckInput"
               type="email"
               v-model="verifyEmail"
               name="email-repeat"
@@ -144,10 +152,36 @@ export default {
       checkPhone: false,
       checkMail: false,
       checkMailRepeat: false,
+
+      // animations
+      animationTarget: "",
+      animationInput: "",
     };
   },
 
   methods: {
+    // dev element seltors
+    onFocusLabelAnimation(e) {
+      const targetID = e.currentTarget.id;
+      const targetLabel = document.querySelector(`[for=${targetID}]`);
+
+      if (
+        targetLabel.classList.contains("test-class-animation-reverse") === true
+      ) {
+        targetLabel.classList.remove("test-class-animation-reverse");
+      }
+      targetLabel.classList.add("test-class-animation");
+      this.animationTarget = targetLabel;
+      this.animationInput = e.currentTarget;
+    },
+
+    onBlurCheckInput() {
+      if (this.animationInput.value.length > 0) {
+        return;
+      }
+      this.animationTarget.classList.add("test-class-animation-reverse");
+    },
+
     // animations
     slideOutLabel() {
       document
