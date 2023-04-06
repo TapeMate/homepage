@@ -8,109 +8,105 @@
       <form @submit="onSubmit">
         <div class="input-group">
           <div class="input-control">
-            <label for="topic">Topic</label>
-            <div class="success-icon-wrapper">
-              <input
-                @keyup="validateTopic"
-                type="text"
-                v-model="topic"
-                name="topic"
-                id="topic"
-                placeholder="Type in your topic here"
-                :class="checkTopic === true ? 'success' : ''"
-              />
-              <i
-                v-if="checkTopic === true"
-                class="fa-regular fa-circle-check"
-                id="topic-success"
-              ></i>
-            </div>
+            <input
+              @keyup="validateTopic"
+              @focus="slideOutLabel"
+              @blur="checkSlideOutRemove"
+              type="text"
+              v-model="topic"
+              name="topic"
+              id="topic"
+              :class="checkTopic === true ? 'success' : ''"
+            />
+            <label id="topic-label" for="topic" class=""
+              >Type in your topic here</label
+            >
+            <i
+              v-if="checkTopic === true"
+              class="fa-regular fa-circle-check"
+              id="topic-success"
+            ></i>
             <p class="topic-error" v-if="errorTopic">
               {{ errorTopic }}
             </p>
           </div>
+
           <div class="input-control">
-            <label for="description">Description</label>
-            <!-- needs validation for no script insert -->
             <textarea
               @keyup="validateDescription"
               type="text"
               v-model="description"
               name="description"
               id="description"
-              placeholder="Type in your topic here"
             />
+            <label for="description"
+              >Fill in your matter of contact here.</label
+            >
             <p class="description-error" v-if="errorDescription">
               {{ errorDescription }}
             </p>
           </div>
         </div>
+
         <div class="input-group">
           <div class="input-control">
-            <label for="phone">Phone</label>
-            <div class="success-icon-wrapper">
-              <input
-                @keyup="validatePhoneNumber"
-                type="text"
-                v-model="phoneNumber"
-                name="phone"
-                id="phone"
-                placeholder="Enter your phonenumber"
-                :class="checkPhone === true ? 'success' : ''"
-              />
-              <i
-                v-if="checkPhone === true"
-                class="fa-regular fa-circle-check"
-                id="phone-success"
-              ></i>
-            </div>
+            <input
+              @keyup="validatePhoneNumber"
+              type="text"
+              v-model="phoneNumber"
+              name="phone"
+              id="phone"
+              :class="checkPhone === true ? 'success' : ''"
+            />
+            <label for="phone">Enter Phone Number</label>
+            <i
+              v-if="checkPhone === true"
+              class="fa-regular fa-circle-check"
+              id="phone-success"
+            ></i>
             <p class="phone-error" v-if="errorPhone">
               {{ errorPhone }}
             </p>
           </div>
+
           <div class="input-control">
-            <label for="email">E-mail Adress</label>
-            <div class="success-icon-wrapper">
-              <input
-                @keyup="validateMailAdress"
-                type="email"
-                v-model="email"
-                name="email"
-                id="email"
-                placeholder="Enter your email adress"
-                :class="checkMail === true ? 'success' : ''"
-              />
-              <i
-                v-if="checkMail === true"
-                class="fa-regular fa-circle-check"
-                id="mail-success"
-              ></i>
-            </div>
+            <input
+              @keyup="validateMailAdress"
+              type="email"
+              v-model="email"
+              name="email"
+              id="email"
+              :class="checkMail === true ? 'success' : ''"
+            />
+            <label for="email">Enter E-mail Adress</label>
+            <i
+              v-if="checkMail === true"
+              class="fa-regular fa-circle-check"
+              id="mail-success"
+            ></i>
             <p class="mail-error" v-if="errorMessageMail">
               {{ errorMessageMail }}
             </p>
           </div>
+
           <div class="input-control">
-            <label for="email-repeat">E-mail Verification</label>
-            <div class="success-icon-wrapper">
-              <input
-                @keyup="verifyMailAdress"
-                type="email"
-                v-model="verifyEmail"
-                name="email-repeat"
-                id="email-repeat"
-                placeholder="Repeat your email adress"
-                :class="checkMailRepeat === true ? 'success' : ''"
-              />
-              <i
-                v-if="checkMailRepeat === true"
-                class="fa-regular fa-circle-check"
-                id="mail-repeat-success"
-              ></i>
-              <p class="mail-repeat-error" v-if="errorMailRepeat">
-                {{ errorMailRepeat }}
-              </p>
-            </div>
+            <input
+              @keyup="verifyMailAdress"
+              type="email"
+              v-model="verifyEmail"
+              name="email-repeat"
+              id="email-repeat"
+              :class="checkMailRepeat === true ? 'success' : ''"
+            />
+            <label for="email-repeat">Repeat E-mail Adress</label>
+            <i
+              v-if="checkMailRepeat === true"
+              class="fa-regular fa-circle-check"
+              id="mail-repeat-success"
+            ></i>
+            <p class="mail-repeat-error" v-if="errorMailRepeat">
+              {{ errorMailRepeat }}
+            </p>
           </div>
         </div>
         <button type="submit" id="submit" disabled="disabled">Submit</button>
@@ -152,6 +148,29 @@ export default {
   },
 
   methods: {
+    // animations
+    slideOutLabel() {
+      document
+        .querySelector("#topic-label")
+        .classList.remove("test-class-animation-reverse");
+      document
+        .querySelector("#topic-label")
+        .classList.add("test-class-animation");
+    },
+
+    checkSlideOutRemove() {
+      const hasContent = document.querySelector("#topic").value.length;
+      console.log(hasContent);
+      if (hasContent === 0) {
+        document
+          .querySelector("#topic-label")
+          .classList.add("test-class-animation-reverse");
+        document
+          .querySelector("#topic-label")
+          .classList.remove("test-class-animation");
+      }
+    },
+
     // enabling Submit Button after checksum is "true" and check if changed
     enableSubmit() {
       if (

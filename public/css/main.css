@@ -21,29 +21,82 @@
   width: 700px;
 }
 .contact-form-container form {
-  padding: 1rem;
-  background: #999;
+  padding: 2rem 1rem;
+  background: #c7c7c7;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 }
+.contact-form-container form .input-group:nth-of-type(1) {
+  margin-bottom: 30px;
+}
 .contact-form-container form .input-group {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 .contact-form-container form .input-group .input-control {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   margin-bottom: 15px;
+}
+.contact-form-container form .input-group .input-control label {
+  color: #777;
+  position: absolute;
+  z-index: 1;
+  padding: 0.5rem 1rem;
+}
+.contact-form-container form .input-group .input-control .test-class-animation {
+  color: black;
+  padding: 0 5px;
+  animation: slideOutLabel 0.4s ease forwards;
+}
+.contact-form-container form .input-group .input-control .test-class-animation-reverse {
+  color: black;
+  padding: 0 5px;
+  animation: slideBackInLabel 0.4s ease forwards;
+}
+@keyframes slideOutLabel {
+  0% {
+    transform: translate(11px, 8px);
+    font-size: 16px;
+  }
+  100% {
+    transform: translate(-5px, -20px);
+    font-size: 12px;
+    color: black;
+  }
+}
+@keyframes slideBackInLabel {
+  0% {
+    transform: translate(-5px, -20px);
+    font-size: 12px;
+    color: black;
+  }
+  100% {
+    transform: translate(11px, 8px);
+    font-size: 16px;
+    color: #777;
+  }
 }
 .contact-form-container form .input-group .input-control input[type=text],
 .contact-form-container form .input-group .input-control input[type=email],
 .contact-form-container form .input-group .input-control textarea {
   width: 100%;
+  border: none;
 }
-.contact-form-container form .input-group .input-control label {
-  background: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
+.contact-form-container form .input-group .input-control textarea {
+  min-height: 150px;
+}
+.contact-form-container form .input-group .input-control textarea,
+.contact-form-container form .input-group .input-control #topic {
+  padding: 0.5rem 1rem;
+}
+.contact-form-container form .input-group .input-control #phone,
+.contact-form-container form .input-group .input-control #email,
+.contact-form-container form .input-group .input-control #email-repeat {
+  padding: 0.5rem;
 }
 .contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(1),
 .contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(2) {
@@ -115,8 +168,7 @@
 }
 .contact-form-container input:focus,
 .contact-form-container textarea:focus {
-  background: #fff8e4;
-  outline: 1px solid rgb(255, 199, 78);
+  outline: 1px solid rgb(5, 250, 115);
 }
 .contact-form-container #submit {
   width: 150px;
