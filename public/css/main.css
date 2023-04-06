@@ -166,33 +166,38 @@
   background: #aaa;
 }
 
-@keyframes slideOutLabel {
+@keyframes labelSlideOut {
   0% {
     transform: translate(0, 0);
     font-size: 16px;
+    font-weight: 300;
+    color: #777;
   }
   100% {
-    transform: translate(-10px, -26px);
+    transform: translate(-16px, -27px);
     font-size: 12px;
+    font-weight: 700;
     color: black;
   }
 }
-@keyframes slideBackInLabel {
+@keyframes labelSlideBackIn {
   0% {
-    transform: translate(-10px, -26px);
+    transform: translate(-16px, -27px);
     font-size: 12px;
+    font-weight: 700;
     color: black;
   }
   100% {
     transform: translate(0, 0);
     font-size: 16px;
+    font-weight: 300;
     color: #777;
   }
 }
-.test-class-animation {
-  animation: slideOutLabel 0.4s ease forwards;
+.labelSlideOut {
+  animation: labelSlideOut 0.4s ease forwards;
 }
 
-.test-class-animation-reverse {
-  animation: slideBackInLabel 0.4s ease forwards;
+.labelSlideBackIn {
+  animation: labelSlideBackIn 0.4s ease forwards;
 }/*# sourceMappingURL=main.css.map */

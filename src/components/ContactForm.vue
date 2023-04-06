@@ -160,17 +160,15 @@ export default {
   },
 
   methods: {
-    // dev element seltors
+    // label animation
     onFocusLabelAnimation(e) {
       const targetID = e.currentTarget.id;
       const targetLabel = document.querySelector(`[for=${targetID}]`);
 
-      if (
-        targetLabel.classList.contains("test-class-animation-reverse") === true
-      ) {
-        targetLabel.classList.remove("test-class-animation-reverse");
+      if (targetLabel.classList.contains("labelSlideBackIn") === true) {
+        targetLabel.classList.remove("labelSlideBackIn");
       }
-      targetLabel.classList.add("test-class-animation");
+      targetLabel.classList.add("labelSlideOut");
       this.animationTarget = targetLabel;
       this.animationInput = e.currentTarget;
     },
@@ -179,30 +177,7 @@ export default {
       if (this.animationInput.value.length > 0) {
         return;
       }
-      this.animationTarget.classList.add("test-class-animation-reverse");
-    },
-
-    // animations
-    slideOutLabel() {
-      document
-        .querySelector("#topic-label")
-        .classList.remove("test-class-animation-reverse");
-      document
-        .querySelector("#topic-label")
-        .classList.add("test-class-animation");
-    },
-
-    checkSlideOutRemove() {
-      const hasContent = document.querySelector("#topic").value.length;
-      console.log(hasContent);
-      if (hasContent === 0) {
-        document
-          .querySelector("#topic-label")
-          .classList.add("test-class-animation-reverse");
-        document
-          .querySelector("#topic-label")
-          .classList.remove("test-class-animation");
-      }
+      this.animationTarget.classList.add("labelSlideBackIn");
     },
 
     // enabling Submit Button after checksum is "true" and check if changed
