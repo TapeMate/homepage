@@ -9,7 +9,8 @@ $font-default: "Karla Medium", sans-serif;
 }
 @font-face {
   font-family: "Karla Bold";
-  src: url("../fonts/Karla/static/Karla-Bold.ttf") format("truetype");
+  src: url("../../../assets/fonts/Karla/static/Karla-Bold.ttf")
+    format("truetype");
   font-weight: 700;
   font-style: bold;
 }
