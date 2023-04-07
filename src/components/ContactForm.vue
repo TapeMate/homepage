@@ -10,7 +10,6 @@
           <div class="input-control">
             <input
               v-on="{
-                keydown: validateTopic,
                 keyup: validateTopic,
                 focus: onFocusAnimation,
                 blur: animationCancel,
@@ -19,8 +18,10 @@
               v-model="topic"
               name="topic"
               id="topic"
-              :is-valid="checkTopic"
-              :class="checkTopic === true ? 'success' : ''"
+              :class="{
+                error: checkTopic === false,
+                success: checkTopic === true,
+              }"
             />
             <label id="topic-label" for="topic" class=""
               >Type in your topic here</label
@@ -30,7 +31,10 @@
               class="fa-regular fa-circle-check"
               id="topic-success"
             ></i>
-            <p class="topic-error" input-err-id="topic">
+            <p
+              class="topic-error"
+              :class="checkTopic === false ? 'errorMsgShow' : ''"
+            >
               {{ errorTopic }}
             </p>
           </div>
@@ -38,7 +42,6 @@
           <div class="input-control">
             <textarea
               v-on="{
-                keydown: validateDescription,
                 keyup: validateDescription,
                 focus: onFocusAnimation,
                 blur: animationCancel,
@@ -47,12 +50,18 @@
               v-model="description"
               name="description"
               id="description"
-              :is-valid="checkDescription"
+              :class="{
+                error: checkDescription === false,
+                success: checkDescription === true,
+              }"
             />
             <label for="description"
               >Fill in your matter of contact here.</label
             >
-            <p class="description-error" input-err-id="description">
+            <p
+              class="description-error"
+              :class="checkDescription === false ? 'errorMsgShow' : ''"
+            >
               {{ errorDescription }}
             </p>
           </div>
@@ -62,7 +71,6 @@
           <div class="input-control">
             <input
               v-on="{
-                keydown: validatePhone,
                 keyup: validatePhone,
                 focus: onFocusAnimation,
                 blur: animationCancel,
@@ -71,8 +79,10 @@
               v-model="phoneNumber"
               name="phone"
               id="phone"
-              :is-valid="checkPhone"
-              :class="checkPhone === true ? 'success' : ''"
+              :class="{
+                error: checkPhone === false,
+                success: checkPhone === true,
+              }"
             />
             <label for="phone">Enter Phone Number</label>
             <i
@@ -80,21 +90,29 @@
               class="fa-regular fa-circle-check"
               id="phone-success"
             ></i>
-            <p class="phone-error" input-err-id="phone">
+            <p
+              class="phone-error"
+              :class="checkPhone === false ? 'errorMsgShow' : ''"
+            >
               {{ errorPhone }}
             </p>
           </div>
 
           <div class="input-control">
             <input
-              @keyup="validateMailAdress"
-              @focus="onFocusAnimation"
-              @blur="animationCancel"
+              v-on="{
+                keyup: validateMail,
+                focus: onFocusAnimation,
+                blur: animationCancel,
+              }"
               type="email"
               v-model="email"
               name="email"
               id="email"
-              :class="checkMail === true ? 'success' : ''"
+              :class="{
+                error: checkMail === false,
+                success: checkMail === true,
+              }"
             />
             <label for="email">Enter E-mail Adress</label>
             <i
@@ -102,21 +120,29 @@
               class="fa-regular fa-circle-check"
               id="mail-success"
             ></i>
-            <p class="mail-error" v-if="errorMessageMail">
+            <p
+              class="mail-error"
+              :class="checkMail === false ? 'errorMsgShow' : ''"
+            >
               {{ errorMessageMail }}
             </p>
           </div>
 
           <div class="input-control">
             <input
-              @keyup="verifyMailAdress"
-              @focus="onFocusAnimation"
-              @blur="animationCancel"
+              v-on="{
+                keyup: verifyMailAdress,
+                focus: onFocusAnimation,
+                blur: animationCancel,
+              }"
               type="email"
               v-model="verifyEmail"
               name="email-repeat"
               id="email-repeat"
-              :class="checkMailRepeat === true ? 'success' : ''"
+              :class="{
+                error: checkMailRepeat === false,
+                success: checkMailRepeat === true,
+              }"
             />
             <label for="email-repeat">Repeat E-mail Adress</label>
             <i
@@ -124,7 +150,10 @@
               class="fa-regular fa-circle-check"
               id="mail-repeat-success"
             ></i>
-            <p class="mail-repeat-error" v-if="errorMailRepeat">
+            <p
+              class="mail-repeat-error"
+              :class="checkMailRepeat === false ? 'errorMsgShow' : ''"
+            >
               {{ errorMailRepeat }}
             </p>
           </div>
@@ -156,18 +185,19 @@ export default {
       errorMessageMail: "",
       errorMailRepeat: "",
       // status for enable Submit
-      checkTopic: false,
-      checkDescription: false,
-      checkPhone: false,
-      checkMail: false,
-      checkMailRepeat: false,
-      // build checksum Object for validation
+      checkTopic: "",
+      checkDescription: "",
+      checkPhone: "",
+      checkMail: "",
+      checkMailRepeat: "",
       screenOut: false,
       // animations
       animationTarget: "",
       animationInput: "",
     };
   },
+
+  watch: {},
 
   methods: {
     // label animation
@@ -205,17 +235,6 @@ export default {
       }
     },
 
-    // error handling
-    handleErrorMsg(el) {
-      const errorTag = document.querySelector(`[input-err-id=${el.id}]`);
-      const valid = el.getAttribute("is-valid");
-      if (valid === "false") {
-        errorTag.classList.add("errorMsgShow");
-      } else if (valid === "true") {
-        errorTag.classList.remove("errorMsgShow");
-      }
-    },
-
     // validate Topic
     validateTopic(e) {
       this.toUpperCase(e);
@@ -240,12 +259,10 @@ export default {
         input.classList.add("error");
         this.errorTopic = "Topic to short.";
         this.checkTopic = false;
-        this.handleErrorMsg(input);
       } else {
         input.classList.remove("error");
         this.errorTopic = "";
         this.checkTopic = true;
-        this.handleErrorMsg(input);
       }
     },
 
@@ -262,12 +279,10 @@ export default {
         input.classList.add("error");
         this.errorDescription = "Description to short.";
         this.checkDescription = false;
-        this.handleErrorMsg(input);
       } else {
         input.classList.remove("error");
         this.errorDescription = "";
         this.checkDescription = true;
-        this.handleErrorMsg(input);
       }
     },
 
@@ -279,25 +294,23 @@ export default {
         input.classList.add("error");
         this.errorPhone = "Please enter a valid phone number.";
         this.checkPhone = false;
-        this.handleErrorMsg(input);
       } else {
         input.classList.remove("error");
         this.errorPhone = "";
         this.checkPhone = true;
-        this.handleErrorMsg(input);
       }
     },
 
     // validate E-Mail
-    validateMailAdress(e) {
+    validateMail(e) {
       const regex = /^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
-      const target = e.currentTarget;
+      const input = e.currentTarget;
       if (!regex.test(this.email)) {
-        target.classList.add("error");
+        console.log("regex wrong");
         this.errorMessageMail = "Please enter a valid E-Mail adress.";
         this.checkMail = false;
-      } else {
-        target.classList.remove("error");
+      } else if (regex.test(this.email)) {
+        console.log("regex ok");
         this.errorMessageMail = "";
         this.checkMail = true;
       }
