@@ -101,7 +101,7 @@
           <div class="input-control">
             <input
               v-on="{
-                keyup: validateMail,
+                keyup: matchEmail,
                 focus: onFocusAnimation,
                 blur: animationCancel,
               }"
@@ -131,12 +131,12 @@
           <div class="input-control">
             <input
               v-on="{
-                keyup: verifyMailAdress,
+                keyup: matchEmail,
                 focus: onFocusAnimation,
                 blur: animationCancel,
               }"
               type="email"
-              v-model="verifyEmail"
+              v-model="emailRepeat"
               name="email-repeat"
               id="email-repeat"
               :class="{
@@ -177,7 +177,7 @@ export default {
       description: "",
       phoneNumber: "",
       email: "",
-      verifyEmail: "",
+      emailRepeat: "",
       // for input error & success handling
       errorTopic: "",
       errorDescription: "",
@@ -296,7 +296,12 @@ export default {
     },
 
     // validate E-Mail
-    validateMail(e) {
+    matchEmail(e) {
+      this.validateEmail(e);
+      this.verifyEmail(e);
+    },
+
+    validateEmail(e) {
       const regex = /^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
       if (!regex.test(this.email)) {
         this.errorMessageMail = "Please enter a valid E-Mail adress.";
@@ -307,19 +312,18 @@ export default {
       }
     },
 
-    verifyMailAdress() {
-      const mail = document.querySelector("#email").value;
-      const mailRepeat = document.querySelector("#email-repeat").value;
-      const mailRepeatInput = document.querySelector("#email-repeat");
-
+    verifyEmail(e) {
+      const Input = document.querySelector("#email-repeat");
+      const email = this.email;
+      const verifyEmail = this.emailRepeat;
       // prevents copy pasting on email repeat input
-      mailRepeatInput.addEventListener("paste", (e) => e.preventDefault());
+      Input.addEventListener("paste", (e) => e.preventDefault());
 
-      if (mail !== mailRepeat) {
+      if (email !== verifyEmail) {
         this.errorMailRepeat =
           "Your E-Mail adresses don't match. Please check.";
         this.checkMailRepeat = false;
-      } else {
+      } else if (email === verifyEmail) {
         this.errorMailRepeat = "";
         this.checkMailRepeat = true;
       }
