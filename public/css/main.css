@@ -59,6 +59,13 @@
   caret-color: lightblue;
   margin-bottom: 25px;
 }
+.contact-form-container form .input-group .input-control input[type=text]:disabled,
+.contact-form-container form .input-group .input-control input[type=email]:disabled,
+.contact-form-container form .input-group .input-control textarea:disabled {
+  color: rgb(215, 255, 215);
+  font-style: italic;
+  border: 1px solid lime;
+}
 .contact-form-container form .input-group .input-control textarea {
   min-height: 150px;
 }
@@ -74,6 +81,13 @@
 .contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(1),
 .contact-form-container form .input-group:nth-of-type(1) .input-control:nth-of-type(2) {
   grid-column: 1/end;
+}
+.contact-form-container .input-checked-icon {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+  z-index: 1;
+  color: rgb(0, 187, 0);
 }
 .contact-form-container .success-message {
   position: absolute;
@@ -100,22 +114,6 @@
 .contact-form-container .success-icon-wrapper {
   position: relative;
 }
-.contact-form-container #topic-success {
-  position: absolute;
-  display: inline;
-  color: rgb(0, 187, 0);
-  top: 28%;
-  right: 2px;
-}
-.contact-form-container #phone-success,
-.contact-form-container #mail-success,
-.contact-form-container #mail-repeat-success {
-  position: absolute;
-  display: inline;
-  color: rgb(0, 187, 0);
-  top: 28%;
-  right: 9px;
-}
 .contact-form-container .error {
   outline: 1px solid red !important;
   caret-color: red !important;
@@ -129,7 +127,7 @@
 .contact-form-container .topic-error,
 .contact-form-container .description-error {
   position: absolute;
-  z-index: 2;
+  z-index: 0;
   font-size: 12px;
   font-weight: normal;
   margin: 0;
@@ -222,4 +220,18 @@
 }
 .errorMsgShow {
   animation: errorMsgShow 0.4s ease-in forwards;
+}
+
+@keyframes captchaSlideIn {
+  0% {
+    transform: translate(0, 0);
+    background: transparent;
+  }
+  100% {
+    transform: translate(0, 100px);
+    background: black;
+  }
+}
+.captchaSlideIn {
+  animation: captchaSlideIn 0.5s ease-in-out forwards;
 }/*# sourceMappingURL=main.css.map */

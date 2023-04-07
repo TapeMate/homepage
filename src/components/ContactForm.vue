@@ -27,8 +27,8 @@
               >Type in your topic here</label
             >
             <i
-              v-if="checkTopic === true"
-              class="fa-regular fa-circle-check"
+              v-if="captchaResponse === true"
+              class="fa-regular fa-circle-check input-checked-icon"
               id="topic-success"
             ></i>
             <p
@@ -58,6 +58,11 @@
             <label for="description"
               >Fill in your matter of contact here.</label
             >
+            <i
+              v-if="captchaResponse === true"
+              class="fa-regular fa-circle-check input-checked-icon"
+              id="description-success"
+            ></i>
             <p
               class="description-error"
               :class="checkDescription === false ? 'errorMsgShow' : ''"
@@ -86,8 +91,8 @@
             />
             <label for="phone">Enter Phone Number</label>
             <i
-              v-if="checkPhone === true"
-              class="fa-regular fa-circle-check"
+              v-if="captchaResponse === true"
+              class="fa-regular fa-circle-check input-checked-icon"
               id="phone-success"
             ></i>
             <p
@@ -116,8 +121,8 @@
             />
             <label for="email">Enter E-mail Adress</label>
             <i
-              v-if="checkMail === true"
-              class="fa-regular fa-circle-check"
+              v-if="captchaResponse === true"
+              class="fa-regular fa-circle-check input-checked-icon"
               id="mail-success"
             ></i>
             <p
@@ -146,8 +151,8 @@
             />
             <label for="email-repeat">Repeat E-mail Adress</label>
             <i
-              v-if="checkMailRepeat === true"
-              class="fa-regular fa-circle-check"
+              v-if="captchaResponse === true"
+              class="fa-regular fa-circle-check input-checked-icon"
               id="mail-repeat-success"
             ></i>
             <p
@@ -160,7 +165,7 @@
         </div>
         <div class="submit-container">
           <div v-if="checkSUM === true" class="captcha-positioning">
-            <Captcha @captcha-response="getResponse" />
+            <Captcha @captcha-response="getCaptchaResponse" />
           </div>
           <button type="submit" id="submit" disabled="disabled">Submit</button>
         </div>
@@ -251,7 +256,7 @@ export default {
       }
     },
 
-    getResponse(value) {
+    getCaptchaResponse(value) {
       this.captchaResponse = value;
       if (this.captchaResponse === true) {
         this.enableSubmit();
@@ -262,6 +267,13 @@ export default {
     enableSubmit() {
       document.querySelector("#submit").disabled = false;
       this.checkSUM = "";
+
+      // ugly solution, needs rework:
+      document.querySelector("#topic").disabled = true;
+      document.querySelector("#description").disabled = true;
+      document.querySelector("#phone").disabled = true;
+      document.querySelector("#email").disabled = true;
+      document.querySelector("#email-repeat").disabled = true;
     },
 
     // validate Topic

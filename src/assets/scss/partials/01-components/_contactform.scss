@@ -41,6 +41,11 @@
           color: #fff;
           caret-color: lightblue;
           margin-bottom: 25px;
+          &:disabled {
+            color: rgb(215, 255, 215);
+            font-style: italic;
+            border: 1px solid lime;
+          }
         }
         textarea {
           min-height: 150px;
@@ -62,6 +67,14 @@
         grid-column: 1 / end;
       }
     }
+  }
+
+  .input-checked-icon {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    z-index: 1;
+    color: rgb(0, 187, 0);
   }
 
   // styling for screen out success
@@ -92,23 +105,23 @@
   .success-icon-wrapper {
     position: relative;
   }
-  #topic-success {
-    position: absolute;
-    display: inline;
-    color: rgb(0, 187, 0);
-    top: 28%;
-    right: 2px;
-  }
+  // #topic-success {
+  //   position: absolute;
+  //   display: inline;
+  //   color: rgb(0, 187, 0);
+  //   top: 28%;
+  //   right: 2px;
+  // }
 
-  #phone-success,
-  #mail-success,
-  #mail-repeat-success {
-    position: absolute;
-    display: inline;
-    color: rgb(0, 187, 0);
-    top: 28%;
-    right: 9px;
-  }
+  // #phone-success,
+  // #mail-success,
+  // #mail-repeat-success {
+  //   position: absolute;
+  //   display: inline;
+  //   color: rgb(0, 187, 0);
+  //   top: 28%;
+  //   right: 9px;
+  // }
 
   //
   .error {
@@ -125,7 +138,7 @@
   .topic-error,
   .description-error {
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     font-size: 12px;
     font-weight: normal;
     margin: 0;
