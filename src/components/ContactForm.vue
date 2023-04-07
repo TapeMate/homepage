@@ -13,7 +13,7 @@
                 keydown: validateTopic,
                 keyup: validateTopic,
                 focus: onFocusAnimation,
-                blur: onBlurCheckInput,
+                blur: animationCancel,
               }"
               type="text"
               v-model="topic"
@@ -41,7 +41,7 @@
                 keydown: validateDescription,
                 keyup: validateDescription,
                 focus: onFocusAnimation,
-                blur: onBlurCheckInput,
+                blur: animationCancel,
               }"
               type="text"
               v-model="description"
@@ -61,13 +61,17 @@
         <div class="input-group">
           <div class="input-control">
             <input
-              @keyup="validatePhoneNumber"
-              @focus="onFocusAnimation"
-              @blur="onBlurCheckInput"
+              v-on="{
+                keydown: validatePhone,
+                keyup: validatePhone,
+                focus: onFocusAnimation,
+                blur: animationCancel,
+              }"
               type="text"
               v-model="phoneNumber"
               name="phone"
               id="phone"
+              :is-valid="checkPhone"
               :class="checkPhone === true ? 'success' : ''"
             />
             <label for="phone">Enter Phone Number</label>
@@ -76,7 +80,7 @@
               class="fa-regular fa-circle-check"
               id="phone-success"
             ></i>
-            <p class="phone-error" v-if="errorPhone">
+            <p class="phone-error" input-err-id="phone">
               {{ errorPhone }}
             </p>
           </div>
@@ -85,7 +89,7 @@
             <input
               @keyup="validateMailAdress"
               @focus="onFocusAnimation"
-              @blur="onBlurCheckInput"
+              @blur="animationCancel"
               type="email"
               v-model="email"
               name="email"
@@ -107,7 +111,7 @@
             <input
               @keyup="verifyMailAdress"
               @focus="onFocusAnimation"
-              @blur="onBlurCheckInput"
+              @blur="animationCancel"
               type="email"
               v-model="verifyEmail"
               name="email-repeat"
@@ -147,20 +151,18 @@ export default {
       verifyEmail: "",
       // for input error & success handling
       errorTopic: "",
-      errorDescription: "test Desc",
+      errorDescription: "",
       errorPhone: "",
       errorMessageMail: "",
       errorMailRepeat: "",
-      // build checksum Object for validation
-      screenOut: false,
-
       // status for enable Submit
       checkTopic: false,
       checkDescription: false,
       checkPhone: false,
       checkMail: false,
       checkMailRepeat: false,
-
+      // build checksum Object for validation
+      screenOut: false,
       // animations
       animationTarget: "",
       animationInput: "",
@@ -181,7 +183,7 @@ export default {
       this.animationInput = e.currentTarget;
     },
 
-    onBlurCheckInput() {
+    animationCancel() {
       if (this.animationInput.value.length > 0) {
         return;
       }
@@ -207,24 +209,11 @@ export default {
     handleErrorMsg(el) {
       const errorTag = document.querySelector(`[input-err-id=${el.id}]`);
       const valid = el.getAttribute("is-valid");
-      // if (id === "description") {
-      //   if (this.checkTopic === false) {
-      //     errorTag.classList.add("errorMsgShowTextarea");
-      //   } else if (this.checkTopic === false) {
-      //     errorTag.classList.add("errorMsgShowTextarea");
-      //   }
-      // } else {
-      console.log(typeof valid);
-      console.log(errorTag);
       if (valid === "false") {
-        console.log("if");
         errorTag.classList.add("errorMsgShow");
       } else if (valid === "true") {
-        console.log("else");
         errorTag.classList.remove("errorMsgShow");
       }
-      console.log("nothing");
-      // }
     },
 
     // validate Topic
@@ -235,7 +224,7 @@ export default {
 
     toUpperCase(e) {
       const element = e.currentTarget;
-      // guard when pressing tab -> element will be undefined -> eventlistener on keyup
+      // guard when pressing tab -> element will be undefined
       if (element === undefined) {
         return;
       }
@@ -262,7 +251,6 @@ export default {
 
     // validate Description
     validateDescription(e) {
-      // const target = e.currentTarget;
       this.toUpperCase(e);
       this.checkDescriptionLength(e);
     },
@@ -284,17 +272,19 @@ export default {
     },
 
     // validate Phone
-    validatePhoneNumber(e) {
+    validatePhone(e) {
       const regex = /^(\+49|0)(?:(?!\d*(\d)\1{7})[\d\s()-]{8,})$/;
-      const target = e.currentTarget;
+      const input = e.currentTarget;
       if (!regex.test(this.phoneNumber)) {
-        target.classList.add("error");
+        input.classList.add("error");
         this.errorPhone = "Please enter a valid phone number.";
         this.checkPhone = false;
+        this.handleErrorMsg(input);
       } else {
-        target.classList.remove("error");
+        input.classList.remove("error");
         this.errorPhone = "";
         this.checkPhone = true;
+        this.handleErrorMsg(input);
       }
     },
 

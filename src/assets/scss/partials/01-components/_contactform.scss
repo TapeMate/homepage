@@ -112,12 +112,10 @@
 
   //
   .error {
-    // background: #fdebeb !important;
     outline: 1px solid red !important;
     caret-color: red !important;
   }
   .success {
-    // background: rgb(209, 255, 209);
     color: rgb(0, 85, 0);
   }
 
@@ -132,10 +130,7 @@
     font-weight: normal;
     margin: 0;
     padding-left: 5px;
-    // margin: 2px;
-    // left: 65%;
-    // background: #ffe3e3;
-    // border: 1px solid;
+
     color: red;
     display: inline;
     text-align: left;
@@ -146,7 +141,6 @@
 
   input:focus,
   textarea:focus {
-    // background: #fff8e4;
     outline: 1px solid lightblue;
   }
 
