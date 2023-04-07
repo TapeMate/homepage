@@ -1,5 +1,5 @@
 <template>
-  <div class="captcha-container">
+  <div class="captcha-container captchaSlideIn">
     <form @submit="onSubmit">
       <h3>Captcha</h3>
       <span class="captcha" id="passphrase">{{ botphrase }}</span>
@@ -16,7 +16,7 @@
         placeholder="Repeat Above Word"
         v-model="captchaRepeat"
       />
-      <input id="submit" type="submit" value="submit" />
+      <input id="captch-submit" type="submit" value="submit" />
     </form>
     <div class="captcha-response">
       <h5 class="success" v-if="response === true">success</h5>
@@ -60,9 +60,7 @@ export default {
       this.captchaRepeat = "";
     },
     emitResponse(value) {
-      console.log("emitResponse");
       this.$emit("captcha-response", value);
-      console.log(value);
     },
   },
 };
@@ -92,7 +90,7 @@ h3 {
 h5 {
   margin: 0;
   padding: 0.5rem;
-  background: #333;
+  background: #222;
   width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -136,6 +134,7 @@ form {
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #333;
+  padding: 0.5rem;
 }
 
 .captcha {
@@ -190,5 +189,18 @@ input[type="submit"] {
   width: 120px;
   padding: 5px 10px;
   text-align: center;
+}
+
+@keyframes captchaSlideIn {
+  0% {
+    transform: translate(-500px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.captchaSlideIn {
+  animation: captchaSlideIn 0.5s ease-in-out forwards;
 }
 </style>

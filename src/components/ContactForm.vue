@@ -4,7 +4,7 @@
       <h2>Contact Request has been send successfully!</h2>
       <i class="fa-solid fa-envelope-circle-check fa-bounce"></i>
     </div>
-    <div @keyup="enableSubmit" class="form-container">
+    <div @keyup="popCaptcha" class="form-container">
       <form @submit="onSubmit">
         <div class="input-group">
           <div class="input-control">
@@ -158,16 +158,26 @@
             </p>
           </div>
         </div>
-        <button type="submit" id="submit" disabled="disabled">Submit</button>
+        <div class="submit-container">
+          <div v-if="checkSUM === true" class="captcha-positioning">
+            <Captcha @captcha-response="getResponse" />
+          </div>
+          <button type="submit" id="submit" disabled="disabled">Submit</button>
+        </div>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import Captcha from "./Captcha.vue";
+
 export default {
   name: "ContactForm",
   emits: ["add-contact"],
+  components: {
+    Captcha,
+  },
   data() {
     return {
       // data
@@ -184,12 +194,15 @@ export default {
       errorPhone: "",
       errorMessageMail: "",
       errorMailRepeat: "",
-      // status for enable Submit
+      // status for enable Submit and/or Captcha
       checkTopic: "",
       checkDescription: "",
       checkPhone: "",
       checkMail: "",
       checkMailRepeat: "",
+      checkSUM: false,
+      // Captcha and Screenout
+      captchaResponse: "",
       screenOut: false,
       // animations
       animationTarget: "",
@@ -220,8 +233,9 @@ export default {
       this.animationTarget.classList.add("labelSlideBackIn");
     },
 
-    // enabling Submit Button after checksum is "true" and check if changed
-    enableSubmit() {
+    // enabling captcha after checkSUM is "true" and check if changed
+
+    popCaptcha() {
       if (
         this.checkTopic === true &&
         this.checkDescription === true &&
@@ -229,10 +243,25 @@ export default {
         this.checkMail === true &&
         this.checkMailRepeat === true
       ) {
-        document.querySelector("#submit").disabled = false;
+        this.checkSUM = true;
+        // document.querySelector("#submit").disabled = false;
       } else {
-        document.querySelector("#submit").disabled = true;
+        this.checkSUM = false;
+        // document.querySelector("#submit").disabled = true;
       }
+    },
+
+    getResponse(value) {
+      this.captchaResponse = value;
+      if (this.captchaResponse === true) {
+        this.enableSubmit();
+      }
+    },
+
+    // enable submit button
+    enableSubmit() {
+      document.querySelector("#submit").disabled = false;
+      this.checkSUM = "";
     },
 
     // validate Topic
@@ -368,4 +397,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.captcha-positioning {
+  /* position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+</style>

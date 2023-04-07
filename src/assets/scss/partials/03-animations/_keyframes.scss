@@ -50,3 +50,20 @@
 .errorMsgShow {
   animation: errorMsgShow 0.4s ease-in forwards;
 }
+
+// captcha slide in keyframe
+@keyframes captchaSlideIn {
+  0% {
+    transform: translate(0, 0);
+    background: transparent;
+  }
+  100% {
+    transform: translate(0, 100px);
+    background: black;
+  }
+}
+
+// captcha slide in class
+.captchaSlideIn {
+  animation: captchaSlideIn 0.5s ease-in-out forwards;
+}
