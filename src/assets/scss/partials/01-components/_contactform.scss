@@ -40,7 +40,7 @@
           background: #222;
           color: #fff;
           caret-color: lightblue;
-          margin-bottom: 15px;
+          margin-bottom: 25px;
         }
         textarea {
           min-height: 150px;
@@ -139,6 +139,9 @@
     color: red;
     display: inline;
     text-align: left;
+  }
+  .description-error {
+    top: 110px;
   }
 
   input:focus,

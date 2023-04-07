@@ -9,13 +9,17 @@
         <div class="input-group">
           <div class="input-control">
             <input
-              @keyup="validateTopic"
-              @focus="onFocusLabelAnimation"
-              @blur="onBlurCheckInput"
+              v-on="{
+                keydown: validateTopic,
+                keyup: validateTopic,
+                focus: onFocusAnimation,
+                blur: onBlurCheckInput,
+              }"
               type="text"
               v-model="topic"
               name="topic"
               id="topic"
+              :is-valid="checkTopic"
               :class="checkTopic === true ? 'success' : ''"
             />
             <label id="topic-label" for="topic" class=""
@@ -26,29 +30,29 @@
               class="fa-regular fa-circle-check"
               id="topic-success"
             ></i>
-            <p class="topic-error" input-err="topic">
+            <p class="topic-error" input-err-id="topic">
               {{ errorTopic }}
             </p>
-            <!-- v-if brauch ich denke nicht mehr reicht als error message -->
-            <!-- <p class="topic-error" v-if="errorTopic">
-              {{ errorTopic }}
-            </p> -->
           </div>
 
           <div class="input-control">
             <textarea
-              @keyup="validateDescription"
-              @focus="onFocusLabelAnimation"
-              @blur="onBlurCheckInput"
+              v-on="{
+                keydown: validateDescription,
+                keyup: validateDescription,
+                focus: onFocusAnimation,
+                blur: onBlurCheckInput,
+              }"
               type="text"
               v-model="description"
               name="description"
               id="description"
+              :is-valid="checkDescription"
             />
             <label for="description"
               >Fill in your matter of contact here.</label
             >
-            <p class="description-error" v-if="errorDescription">
+            <p class="description-error" input-err-id="description">
               {{ errorDescription }}
             </p>
           </div>
@@ -58,7 +62,7 @@
           <div class="input-control">
             <input
               @keyup="validatePhoneNumber"
-              @focus="onFocusLabelAnimation"
+              @focus="onFocusAnimation"
               @blur="onBlurCheckInput"
               type="text"
               v-model="phoneNumber"
@@ -80,7 +84,7 @@
           <div class="input-control">
             <input
               @keyup="validateMailAdress"
-              @focus="onFocusLabelAnimation"
+              @focus="onFocusAnimation"
               @blur="onBlurCheckInput"
               type="email"
               v-model="email"
@@ -102,7 +106,7 @@
           <div class="input-control">
             <input
               @keyup="verifyMailAdress"
-              @focus="onFocusLabelAnimation"
+              @focus="onFocusAnimation"
               @blur="onBlurCheckInput"
               type="email"
               v-model="verifyEmail"
@@ -142,8 +146,8 @@ export default {
       email: "",
       verifyEmail: "",
       // for input error & success handling
-      errorTopic: "this is a test topic error (TTT)",
-      errorDescription: "",
+      errorTopic: "",
+      errorDescription: "test Desc",
       errorPhone: "",
       errorMessageMail: "",
       errorMailRepeat: "",
@@ -165,7 +169,7 @@ export default {
 
   methods: {
     // label animation
-    onFocusLabelAnimation(e) {
+    onFocusAnimation(e) {
       const targetID = e.currentTarget.id;
       const targetLabel = document.querySelector(`[for=${targetID}]`);
 
@@ -199,46 +203,83 @@ export default {
       }
     },
 
+    // error handling
+    handleErrorMsg(el) {
+      const errorTag = document.querySelector(`[input-err-id=${el.id}]`);
+      const valid = el.getAttribute("is-valid");
+      // if (id === "description") {
+      //   if (this.checkTopic === false) {
+      //     errorTag.classList.add("errorMsgShowTextarea");
+      //   } else if (this.checkTopic === false) {
+      //     errorTag.classList.add("errorMsgShowTextarea");
+      //   }
+      // } else {
+      console.log(typeof valid);
+      console.log(errorTag);
+      if (valid === "false") {
+        console.log("if");
+        errorTag.classList.add("errorMsgShow");
+      } else if (valid === "true") {
+        console.log("else");
+        errorTag.classList.remove("errorMsgShow");
+      }
+      console.log("nothing");
+      // }
+    },
+
     // validate Topic
     validateTopic(e) {
-      const target = e.currentTarget;
-      this.toUpperCase(target);
-      this.checkTopicLength(target);
+      this.toUpperCase(e);
+      this.checkTopicLength(e);
     },
 
     toUpperCase(e) {
-      const str = e.value.charAt(0).toUpperCase() + e.value.slice(1);
-      document.querySelector(`#${e.id}`).value = str;
+      const element = e.currentTarget;
+      // guard when pressing tab -> element will be undefined -> eventlistener on keyup
+      if (element === undefined) {
+        return;
+      }
+      const str =
+        element.value.charAt(0).toUpperCase() + element.value.slice(1);
+      document.querySelector(`#${element.id}`).value = str;
     },
 
     checkTopicLength(e) {
-      if (this.topic.length <= 8) {
-        e.classList.add("error");
+      const minLength = 10;
+      const input = e.currentTarget;
+      if (this.topic.length <= minLength) {
+        input.classList.add("error");
         this.errorTopic = "Topic to short.";
         this.checkTopic = false;
+        this.handleErrorMsg(input);
       } else {
-        e.classList.remove("error");
+        input.classList.remove("error");
         this.errorTopic = "";
         this.checkTopic = true;
+        this.handleErrorMsg(input);
       }
     },
 
     // validate Description
     validateDescription(e) {
-      const target = e.currentTarget;
-      this.toUpperCase(target);
-      this.checkDescriptionLength(target);
+      // const target = e.currentTarget;
+      this.toUpperCase(e);
+      this.checkDescriptionLength(e);
     },
 
     checkDescriptionLength(e) {
-      if (this.description.length <= 30) {
-        e.classList.add("error");
+      const minLength = 30;
+      const input = e.currentTarget;
+      if (this.description.length <= minLength) {
+        input.classList.add("error");
         this.errorDescription = "Description to short.";
         this.checkDescription = false;
+        this.handleErrorMsg(input);
       } else {
-        e.classList.remove("error");
+        input.classList.remove("error");
         this.errorDescription = "";
         this.checkDescription = true;
+        this.handleErrorMsg(input);
       }
     },
 

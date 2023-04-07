@@ -57,7 +57,7 @@
   background: #222;
   color: #fff;
   caret-color: lightblue;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 .contact-form-container form .input-group .input-control textarea {
   min-height: 150px;
@@ -138,6 +138,9 @@
   display: inline;
   text-align: left;
 }
+.contact-form-container .description-error {
+  top: 110px;
+}
 .contact-form-container input:focus,
 .contact-form-container textarea:focus {
   outline: 1px solid lightblue;
@@ -210,23 +213,13 @@
 @keyframes errorMsgShow {
   0% {
     transform: translate(0, 0);
+    font-weight: 500;
   }
   100% {
-    transform: translate(0, 41px);
-  }
-}
-@keyframes errorMsgHide {
-  0% {
-    transform: translate(0, 41px);
-  }
-  100% {
-    transform: translate(0, 0);
+    transform: translate(0, 45px);
+    font-weight: bold;
   }
 }
 .errorMsgShow {
   animation: errorMsgShow 0.4s ease-in forwards;
-}
-
-.errorMsgHide {
-  animation: errorMsgHide 0.4s ease-in forwards;
 }/*# sourceMappingURL=main.css.map */

@@ -13,7 +13,6 @@
     color: #fff;
   }
 }
-
 @keyframes labelSlideBackIn {
   0% {
     transform: translate(-11px, -28px);
@@ -28,7 +27,6 @@
     color: #888;
   }
 }
-
 // label focus animation classes
 .labelSlideOut {
   animation: labelSlideOut 0.4s ease forwards;
@@ -37,28 +35,34 @@
   animation: labelSlideBackIn 0.4s ease forwards;
 }
 
-// label focus animation keyframes
+// standard sized input error keyframe
 @keyframes errorMsgShow {
   0% {
     transform: translate(0, 0);
+    font-weight: 500;
   }
   100% {
-    transform: translate(0, 41px);
+    transform: translate(0, 45px);
+    font-weight: bold;
   }
 }
-@keyframes errorMsgHide {
-  0% {
-    transform: translate(0, 41px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-// label focus animation classes
+// standard sized input error classe
 .errorMsgShow {
   animation: errorMsgShow 0.4s ease-in forwards;
 }
-.errorMsgHide {
-  animation: errorMsgHide 0.4s ease-in forwards;
-}
+
+// textarea input error keyframe
+// @keyframes errorMsgShowTextarea {
+//   0% {
+//     transform: translate(0, 0);
+//     font-weight: 500;
+//   }
+//   100% {
+//     transform: translate(0, 500px);
+//     font-weight: 500;
+//   }
+// }
+// // textarea input error classe
+// .errorMsgShowTextarea {
+//   animation: errorMsgShowTextarea 0.4s ease-in forwards;
+// }
