@@ -64,6 +64,8 @@ p {
   margin: 0;
 }
 .footer-main {
+  position: fixed;
+  bottom: 0;
   width: 100%;
   height: auto;
   background: #fff;

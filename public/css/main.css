@@ -67,7 +67,7 @@
   border: 1px solid lime;
 }
 .contact-form-container form .input-group .input-control textarea {
-  min-height: 150px;
+  min-height: 250px;
 }
 .contact-form-container form .input-group .input-control textarea,
 .contact-form-container form .input-group .input-control #topic {
