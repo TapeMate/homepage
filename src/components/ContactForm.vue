@@ -256,11 +256,9 @@ export default {
       const minLength = 10;
       const input = e.currentTarget;
       if (this.topic.length <= minLength) {
-        input.classList.add("error");
         this.errorTopic = "Topic to short.";
         this.checkTopic = false;
       } else {
-        input.classList.remove("error");
         this.errorTopic = "";
         this.checkTopic = true;
       }
@@ -276,11 +274,9 @@ export default {
       const minLength = 30;
       const input = e.currentTarget;
       if (this.description.length <= minLength) {
-        input.classList.add("error");
         this.errorDescription = "Description to short.";
         this.checkDescription = false;
       } else {
-        input.classList.remove("error");
         this.errorDescription = "";
         this.checkDescription = true;
       }
@@ -291,11 +287,9 @@ export default {
       const regex = /^(\+49|0)(?:(?!\d*(\d)\1{7})[\d\s()-]{8,})$/;
       const input = e.currentTarget;
       if (!regex.test(this.phoneNumber)) {
-        input.classList.add("error");
         this.errorPhone = "Please enter a valid phone number.";
         this.checkPhone = false;
       } else {
-        input.classList.remove("error");
         this.errorPhone = "";
         this.checkPhone = true;
       }
@@ -304,13 +298,10 @@ export default {
     // validate E-Mail
     validateMail(e) {
       const regex = /^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
-      const input = e.currentTarget;
       if (!regex.test(this.email)) {
-        console.log("regex wrong");
         this.errorMessageMail = "Please enter a valid E-Mail adress.";
         this.checkMail = false;
       } else if (regex.test(this.email)) {
-        console.log("regex ok");
         this.errorMessageMail = "";
         this.checkMail = true;
       }
@@ -325,12 +316,10 @@ export default {
       mailRepeatInput.addEventListener("paste", (e) => e.preventDefault());
 
       if (mail !== mailRepeat) {
-        mailRepeatInput.classList.add("error");
         this.errorMailRepeat =
           "Your E-Mail adresses don't match. Please check.";
         this.checkMailRepeat = false;
       } else {
-        mailRepeatInput.classList.remove("error");
         this.errorMailRepeat = "";
         this.checkMailRepeat = true;
       }
